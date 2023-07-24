@@ -11,6 +11,7 @@ root.render(
     <App />
   </React.StrictMode>
 );
+//monitor the state of redux, if the state changes, do render
 store.subscribe(()=>{
   root.render(
   <React.StrictMode>

@@ -1,10 +1,11 @@
 import './App.css';
-import Count from "./components/Count"
+import Count from './containers/count'
+import store from './redux/store'
 
 function App() {
   return (
     <div className="App">
-      <Count/>
+      <Count store={store}/>
     </div>
   );
 }

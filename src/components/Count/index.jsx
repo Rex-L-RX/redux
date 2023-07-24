@@ -1,37 +1,29 @@
 import React, { Component } from 'react'
-import store from '../../redux/store.js'
-import {
-    createIncrementAction,
-    createDecrementAction,
-    createAsyncAction
-} from '../../redux/count_action.js'
+
 export default class Count extends Component {
 
     increment = () => {
         const {value} = this.selectedNumber
-        store.dispatch(createIncrementAction(value*1))
+        this.props.increment(value*1)
     }
     decrement = () => {
         const {value} = this.selectedNumber
-        store.dispatch(createDecrementAction(value*1))
+        this.props.decrement(value*1)
     }
     incrementIfOdd = () => {
         const {value} = this.selectedNumber
-        const count  = store.getState()
-        if(count%2!==0){
-            store.dispatch(createIncrementAction(value*1))
+        if(this.props.count % 2 !== 0){
+            this.props.increment(value*1)
         }
     }
     incrementAsyc = () => {
         const {value} = this.selectedNumber
-        setTimeout(()=>{
-            store.dispatch(createAsyncAction(value*1,500))
-        },500)
+        this.props.incrementAsync(value*1,500)
     }
     render() {
         return (
             <div>
-                <h1>Sum: {store.getState()}</h1>
+                <h1>Sum: {this.props.count}</h1>
                 <select ref={c => this.selectedNumber = c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
