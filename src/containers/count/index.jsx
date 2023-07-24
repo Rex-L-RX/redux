@@ -10,17 +10,24 @@ function mapStateToProps(state) {
     return { count: state }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        increment: (data) => {
-            dispatch(createIncrementAction(data))
+//mapDispatchToProps can be a function or it can be replaced by an obj
+/* function mapDispatchToProps(dispatch) {
+     return {
+         increment: (data) => {
+             dispatch(createIncrementAction(data))
         },
         decrement: (data) => {
-            dispatch(createDecrementAction(data))
-        },
+             dispatch(createDecrementAction(data))
+         },
         incrementAsync: (data,time)=>{
-            dispatch(createAsyncAction(data,time))
-        }
-    }
+             dispatch(createAsyncAction(data,time))
+         }
+     }
+}*/
+
+const mapDispatchToProps = {
+    increment: createIncrementAction,
+    decrement: createDecrementAction,
+    incrementAsync: createAsyncAction
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CountUI)
