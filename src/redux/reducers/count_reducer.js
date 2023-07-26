@@ -1,4 +1,4 @@
-import {INCREMENT,DECREMENT} from './constant'
+import {INCREMENT,DECREMENT} from '../constant'
 //reducer for Count component
 //get preState and action
 const initState=0;

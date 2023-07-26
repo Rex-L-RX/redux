@@ -2,14 +2,9 @@ import {
     createIncrementAction,
     createDecrementAction,
     createAsyncAction
-} from '../../redux/count_action'
+} from '../../redux/actions/count_action'
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
-function mapStateToProps(state) {
-    return { count: state }
-}
-
-
 
 class Count extends Component {
 
@@ -34,7 +29,8 @@ class Count extends Component {
     render() {
         return (
             <div>
-                <h1>Sum: {this.props.count}</h1>
+                <h2>This is Count component</h2>
+                <h4>Sum: {this.props.count}, The Number of Persons: {this.props.numberOfPersons}</h4>
                 <select ref={c => this.selectedNumber = c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -49,6 +45,10 @@ class Count extends Component {
 
         )
     }
+}
+
+function mapStateToProps(state) {
+    return { count: state.sum, numberOfPersons: state.persons.length  }
 }
 
 //mapDispatchToProps can be a function or it can be replaced by an obj
